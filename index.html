@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lopes Countdown</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            margin: 0;
+            background-image: url('./img/background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #FFFFFF;
+        }
+        .content {
+            margin: 20% auto 0 auto;
+            text-align: center;
+        }
+        @media (max-width: 767px) {
+            body {
+                background-repeat: repeat-y;
+            }
+            .content {
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h1 id="countdown"></h1>
+</div>
+</body>
+<script>
+  // Defina a data de término do contador
+  const endDate = new Date("2024-05-24T00:00:00Z");
+
+  // Atualize o contador a cada segundo
+  setInterval(() => {
+    // Obtenha a data atual
+    const now = new Date();
+
+    // Calcule a diferença entre as datas
+    const diff = endDate - now;
+
+    // Calcule o número de dias, horas, minutos e segundos
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    // Exiba o contador
+    let show = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos restantes.`;
+    document.getElementById("countdown").innerHTML = show;
+  }, 1000);
+</script>
+</html>
